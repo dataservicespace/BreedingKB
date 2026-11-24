@@ -10,24 +10,24 @@ language: zh
 
 ### 一、训练集（2014—2021）
 
-1. [田间产量与性状记录 ｜ 表型数据](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-Vp35dp089ocTd4xmX5ycGt28nhe)
-2. [试验地点、地理位置与田间管理信息 ｜ 环境元数据](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-NLRJdf2Lvogg5Qxw4qHc3n84n6f)
-3. [土壤养分与理化指标 ｜ 土壤数据](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-GIbOdHiK5oQ0CzxnL32ceQZmnYb)
-4. [逐日温度、降水、湿度与辐射记录 ｜ 气象数据](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-MykNdtxjmoxvL8xGJEwcglVrnfe)
-5. [按生育阶段汇总的环境特征 ｜ 环境协变量 EC](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-Oa1Nd8rhNoPYpUxKIc8cAutMnNf)
-6. [杂交组合的全基因组 SNP 信息 ｜ 基因型 VCF](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-NDkRdyvXnoAUW7x2nLWcjrG1nzh)
-7. [杂交组合名称、亲本及数据集对应关系 ｜ 杂交种索引](https://a2eb1ewtyj.feishu.cn/wiki/UQPnwnoiciRYcKk3SB3ckR4snzb#share-KQ7HdH2EooeY3Fxgw9tc4ekXnHf)
-8. [自交系原始测序数据来源 ｜ 测序来源信息](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-JLLCdDdU3oJ1crx84bqc32p3nRI)
-9. [补充 BioProject 编号的测序来源 ｜ 测序来源](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-LE09dyNZno6jjSxs1pEcFPEDnwf)
+1. [田间产量与性状记录 ｜ 表型数据](#training-trait-data)
+2. [试验地点、地理位置与田间管理信息 ｜ 环境元数据](#training-meta)
+3. [土壤养分与理化指标 ｜ 土壤数据](#training-soil)
+4. [逐日温度、降水、湿度与辐射记录 ｜ 气象数据](#training-weather)
+5. [按生育阶段汇总的环境特征 ｜ 环境协变量 EC](#training-ec)
+6. [杂交组合的全基因组 SNP 信息 ｜ 基因型 VCF](#training-genotype)
+7. [杂交组合名称、亲本及数据集对应关系 ｜ 杂交种索引](#hybrid-index)
+8. [自交系原始测序数据来源 ｜ 测序来源信息](#genotype-sources)
+9. [补充 BioProject 编号的测序来源 ｜ 测序来源](#genotype-sources-updated)
 
 ### 二、测试集（2022）
 
-1. [待预测的环境 × 杂交组合清单 ｜ 产量提交模板](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-CXQ0dJhthon0rdxfpwfcaCAWnVb)
-2. [2022 年试验地点、地理位置与田间管理信息 ｜ 环境元数据](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-QimMdMcEnoJSnIxnuJicKhm1n9b)
-3. [2022 年土壤养分与理化指标 ｜ 土壤数据](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-WCQhdTEqJowT1Lx30xVckW7un8e)
-4. [2022 年逐日温度、降水、湿度与辐射记录 ｜ 气象数据](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-U404dJYEfoNR4OxxzfzcWao6nbv)
-5. [2022 年按生育阶段汇总的环境特征 ｜ 环境协变量 EC](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-VG0ad4qhPoWUNZx0DpWcsu9fnEc)
-6. [2022 年真实产量观测 ｜ 模型最终评估答案](https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb?create_from=create_doc_to_wiki&from=wiki#share-CapMdyzKqoXWsWxpyV9csWGen6d)
+1. [待预测的环境 × 杂交组合清单 ｜ 产量提交模板](#testing-submission)
+2. [2022 年试验地点、地理位置与田间管理信息 ｜ 环境元数据](#testing-meta)
+3. [2022 年土壤养分与理化指标 ｜ 土壤数据](#testing-soil)
+4. [2022 年逐日温度、降水、湿度与辐射记录 ｜ 气象数据](#testing-weather)
+5. [2022 年按生育阶段汇总的环境特征 ｜ 环境协变量 EC](#testing-ec)
+6. [2022 年真实产量观测 ｜ 模型最终评估答案](#testing-answer)
 
 ### 三，数据来源
 
@@ -58,7 +58,7 @@ language: zh
 
 2022 数据包含多个农艺性状和开花相关性状，而且基因型标记密度更高；2024 数据主要面向产量预测，提供的杂交组合基因型矩阵只有 2,425 个 SNP 标记
 
-## `1_Training_Trait_Data_2014_2021.csv` —— 核心表型数据
+## `1_Training_Trait_Data_2014_2021.csv` —— 核心表型数据 {#training-trait-data}
 
 ### 文件概述
 
@@ -92,7 +92,7 @@ language: zh
 
 **核心定位：** 该文件提供杂交组合在不同环境下的实际田间表现，是后续表型预测、杂交组合排序与筛选的主要数据基础。
 
-## ② `2_Training_Meta_Data_2014_2021.csv` —— 试验环境元数据
+## ② `2_Training_Meta_Data_2014_2021.csv` —— 试验环境元数据 {#training-meta}
 
 ### 文件概述
 
@@ -125,7 +125,7 @@ language: zh
 
 ---
 
-## ③ `3_Training_Soil_Data_2015_2021.csv` —— 土壤理化数据
+## ③ `3_Training_Soil_Data_2015_2021.csv` —— 土壤理化数据 {#training-soil}
 
 ### 文件概述
 
@@ -158,7 +158,7 @@ language: zh
 
 ---
 
-## ④ `4_Training_Weather_Data_2014_2021.csv` —— 气象数据
+## ④ `4_Training_Weather_Data_2014_2021.csv` —— 气象数据 {#training-weather}
 
 ### 文件概述
 
@@ -196,7 +196,7 @@ language: zh
 
 ---
 
-## ⑤ `6_Training_EC_Data_2014_2021.csv` —— 环境协变量数据（EC）
+## ⑤ `6_Training_EC_Data_2014_2021.csv` —— 环境协变量数据（EC） {#training-ec}
 
 ### 文件概述
 
@@ -252,7 +252,7 @@ EC 数据包含 765 个环境特征，字段名称采用统一组合形式：
 
 ---
 
-## ⑥ `5_Genotype_Data_All_Years.vcf.zip` —— 核心基因型数据
+## ⑥ `5_Genotype_Data_All_Years.vcf.zip` —— 核心基因型数据 {#training-genotype}
 
 ### 文件概述
 
@@ -300,7 +300,7 @@ GT（Genotype）字段常见取值：
 
 ---
 
-## ⑦ `All_hybrid_names_info.csv` —— 杂交种索引信息
+## ⑦ `All_hybrid_names_info.csv` —— 杂交种索引信息 {#hybrid-index}
 
 ### 文件概述
 
@@ -330,7 +330,7 @@ GT（Genotype）字段常见取值：
 
 ---
 
-## ⑧ `GenoDataSources.txt` —— 自交系基因型测序来源
+## ⑧ `GenoDataSources.txt` —— 自交系基因型测序来源 {#genotype-sources}
 
 ### 文件概述
 
@@ -361,7 +361,7 @@ GT（Genotype）字段常见取值：
 
 ---
 
-## ⑨ `GenoDataSourcesWithUpdatedBioProject.txt` —— 自交系测序来源
+## ⑨ `GenoDataSourcesWithUpdatedBioProject.txt` —— 自交系测序来源 {#genotype-sources-updated}
 
 ### 文件概述
 
@@ -391,7 +391,7 @@ GT（Genotype）字段常见取值：
 
 测试集主要用于验证模型对新年度试验环境和杂交组合的预测能力。
 
-## ① `1_Submission_Template_2022.csv` —— 2022 年产量预测提交模板
+## ① `1_Submission_Template_2022.csv` —— 2022 年产量预测提交模板 {#testing-submission}
 
 ### 文件概述
 
@@ -421,7 +421,7 @@ GT（Genotype）字段常见取值：
 
 ---
 
-## ② `2_Testing_Meta_Data_2022.csv` —— 2022 年试验环境元数据
+## ② `2_Testing_Meta_Data_2022.csv` —— 2022 年试验环境元数据 {#testing-meta}
 
 ### 文件概述
 
@@ -454,7 +454,7 @@ GT（Genotype）字段常见取值：
 
 ---
 
-## ③ `3_Testing_Soil_Data_2022.csv` —— 2022 年土壤理化数据
+## ③ `3_Testing_Soil_Data_2022.csv` —— 2022 年土壤理化数据 {#testing-soil}
 
 ### 文件概述
 
@@ -487,7 +487,7 @@ GT（Genotype）字段常见取值：
 
 ---
 
-## ④ `4_Testing_Weather_Data_2022.csv` —— 2022 年气象数据
+## ④ `4_Testing_Weather_Data_2022.csv` —— 2022 年气象数据 {#testing-weather}
 
 ### 文件概述
 
@@ -521,7 +521,7 @@ GT（Genotype）字段常见取值：
 
 ---
 
-## ⑤ `6_Testing_EC_Data_2022.csv` —— 2022 年环境协变量数据
+## ⑤ `6_Testing_EC_Data_2022.csv` —— 2022 年环境协变量数据 {#testing-ec}
 
 ### 文件概述
 
@@ -561,7 +561,7 @@ GT（Genotype）字段常见取值：
 
 ---
 
-## ⑥ `Test_Set_Observed_Values_ANSWER.csv` —— 2022 年真实产量答案文件
+## ⑥ `Test_Set_Observed_Values_ANSWER.csv` —— 2022 年真实产量答案文件 {#testing-answer}
 
 ### 文件概述
 
@@ -1187,7 +1187,7 @@ fit_multi_env <- lmer(
 
 G2F 数据集主要提供 VCF 格式的基因型数据，同时提供杂交种索引和自交系测序来源信息。
 
-##### 1. `5_Genotype_Data_All_Years.vcf.zip`【核心·基因型数据】
+##### 1. `5_Genotype_Data_All_Years.vcf.zip`【核心·基因型数据】 {#training-genotype}
 
 - **文件格式：** VCF（Variant Call Format）。
 - **压缩文件大小：** 约 368 MB。
@@ -1244,7 +1244,7 @@ G2F 中的杂交组合通常采用：
 
 该矩阵是后续遗传相似性计算、图结构构建和性状预测的重要输入。
 
-##### 2. `All_hybrid_names_info.csv`【杂交种信息索引】
+##### 2. `All_hybrid_names_info.csv`【杂交种信息索引】 {#hybrid-index}
 
 - **规模：** 5,188 行 × 6 列。
 - **数据粒度：** 每一行代表一个杂交种或材料的索引记录。
@@ -1267,7 +1267,7 @@ G2F 中的杂交组合通常采用：
 
 以上为索引标记统计，后续还需要通过实际 ID 匹配确认训练材料、测试材料和 VCF 样本之间的交集，不能仅根据数量相同就认定全部匹配。
 
-##### 3. `GenoDataSources.txt`【自交系测序来源】
+##### 3. `GenoDataSources.txt`【自交系测序来源】 {#genotype-sources}
 
 - **规模：** 约 2,221 行 × 4 列。
 - **数据粒度：** 每一行记录一个自交系的测序来源信息。
@@ -1284,7 +1284,7 @@ G2F 中的杂交组合通常采用：
 
 该文件主要用于了解自交系遗传信息的来源和测序背景，不是直接用于模型训练的 SNP 矩阵。
 
-##### 4. `GenoDataSourcesWithUpdatedBioProject.txt`【自交系测序来源·更新版】
+##### 4. `GenoDataSourcesWithUpdatedBioProject.txt`【自交系测序来源·更新版】 {#genotype-sources-updated}
 
 该文件与 `GenoDataSources.txt` 的主要作用相同，补充了部分测序来源和 BioProject 信息。
 
