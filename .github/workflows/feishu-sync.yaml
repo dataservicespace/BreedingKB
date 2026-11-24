@@ -1,3 +1,4 @@
+
 name: Sync Feishu document and publish site
 
 on:
@@ -5,21 +6,19 @@ on:
     - cron: "0 */4 * * *"
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
-
 concurrency:
   group: feishu-sync-and-pages
   cancel-in-progress: false
 
 jobs:
-  sync-build-deploy:
+  # 第一阶段：同步飞书文档并构建网站
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
       - name: Checkout repository
@@ -32,7 +31,6 @@ jobs:
         with:
           go-version: "1.23"
 
-      
       - name: Install feishu2md
         run: |
           curl -fL --retry 3 \
@@ -47,7 +45,6 @@ jobs:
           sudo install "$BIN" /usr/local/bin/feishu2md
 
           feishu2md --version
-
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -90,8 +87,48 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages
           path: ./public
+
+  # 第二阶段：等待 Artifact 就绪，再部署
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Wait for Pages artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in $(seq 1 12); do
+            artifact_id="$(gh api \
+              "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts" \
+              --jq '.artifacts[] | select(.name == "github-pages" and .expired == false) | .id' \
+              | head -n 1)"
+
+            if [ -n "$artifact_id" ]; then
+              echo "Found github-pages artifact: $artifact_id"
+              exit 0
+            fi
+
+            echo "Waiting for artifact... (${attempt}/12)"
+            sleep 5
+          done
+
+          echo "::error::github-pages artifact not found after 60 seconds"
+          exit 1
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
