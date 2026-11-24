@@ -1,0 +1,6 @@
+# BreedingLab 飞书文档同步配置
+docs:
+  - feishu_url: "https://ycnzo13h3y16.feishu.cn/wiki/PNpOwBvP5i4u68kMIcicn0sxnYb"
+    target: "content/docs/breedinglab.zh.md"
+    weight: 1
+
