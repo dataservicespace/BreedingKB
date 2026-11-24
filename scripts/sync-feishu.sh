@@ -75,6 +75,89 @@ target = Path(sys.argv[2])
 weight = int(sys.argv[3])
 body = source.read_text(encoding="utf-8")
 
+# 飞书目录链接转换为本地页面锚点
+link_targets = {
+    "share-Vp35dp089ocTd4xmX5ycGt28nhe": (
+        "1_Training_Trait_Data_2014_2021.csv", "training-trait-data"),
+    "share-NLRJdf2Lvogg5Qxw4qHc3n84n6f": (
+        "2_Training_Meta_Data_2014_2021.csv", "training-meta"),
+    "share-GIbOdHiK5oQ0CzxnL32ceQZmnYb": (
+        "3_Training_Soil_Data_2015_2021.csv", "training-soil"),
+    "share-MykNdtxjmoxvL8xGJEwcglVrnfe": (
+        "4_Training_Weather_Data_2014_2021.csv", "training-weather"),
+    "share-Oa1Nd8rhNoPYpUxKIc8cAutMnNf": (
+        "6_Training_EC_Data_2014_2021.csv", "training-ec"),
+    "share-NDkRdyvXnoAUW7x2nLWcjrG1nzh": (
+        "5_Genotype_Data_All_Years.vcf.zip", "training-genotype"),
+    "share-KQ7HdH2EooeY3Fxgw9tc4ekXnHf": (
+        "All_hybrid_names_info.csv", "hybrid-index"),
+    "share-JLLCdDdU3oJ1crx84bqc32p3nRI": (
+        "GenoDataSources.txt", "genotype-sources"),
+    "share-LE09dyNZno6jjSxs1pEcFPEDnwf": (
+        "GenoDataSourcesWithUpdatedBioProject.txt",
+        "genotype-sources-updated"),
+    "share-CXQ0dJhthon0rdxfpwfcaCAWnVb": (
+        "1_Submission_Template_2022.csv", "testing-submission"),
+    "share-QimMdMcEnoJSnIxnuJicKhm1n9b": (
+        "2_Testing_Meta_Data_2022.csv", "testing-meta"),
+    "share-WCQhdTEqJowT1Lx30xVckW7un8e": (
+        "3_Testing_Soil_Data_2022.csv", "testing-soil"),
+    "share-U404dJYEfoNR4OxxzfzcWao6nbv": (
+        "4_Testing_Weather_Data_2022.csv", "testing-weather"),
+    "share-VG0ad4qhPoWUNZx0DpWcsu9fnEc": (
+        "6_Testing_EC_Data_2022.csv", "testing-ec"),
+    "share-CapMdyzKqoXWsWxpyV9csWGen6d": (
+        "Test_Set_Observed_Values_ANSWER.csv", "testing-answer"),
+}
+
+# 替换飞书链接
+rewritten = set()
+
+def replace_link(match):
+    label, url = match.groups()
+    fragment = url.partition("#")[2]
+
+    if fragment not in link_targets:
+        return match.group(0)
+
+    rewritten.add(fragment)
+    anchor = link_targets[fragment][1]
+    return f"[{label}](#{anchor})"
+
+body = re.sub(
+    r"\[([^\]]+)\]\((https?://[^)]+)\)",
+    replace_link,
+    body
+)
+
+# 给对应章节标题添加本地锚点 ID
+lines = body.splitlines()
+found = set()
+
+for i, line in enumerate(lines):
+    if not line.startswith("#"):
+        continue
+
+    for fragment, (heading, anchor) in link_targets.items():
+        if heading in line:
+            lines[i] = f"{line.rstrip()} {{#{anchor}}}"
+            found.add(anchor)
+            break
+
+missing = {
+    anchor for _, anchor in link_targets.values()
+} - found
+
+if missing:
+    raise SystemExit(
+        f"未找到对应章节标题，无法生成本地目录锚点：{sorted(missing)}"
+    )
+
+body = "\n".join(lines)
+
+print(f"本地目录链接转换成功：{len(rewritten)} 个")
+
+
 match = re.search(r"(?m)^#\s+(.+?)\s*$", body)
 title = match.group(1).strip() if match else "BreedingLab｜多源育种数据处理与智能组配"
 if match:
