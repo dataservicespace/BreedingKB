@@ -75,6 +75,34 @@ target = Path(sys.argv[2])
 weight = int(sys.argv[3])
 body = source.read_text(encoding="utf-8")
 
+# 将 feishu2md 输出的普通文本公式转换为 LaTeX
+formula_replacements = [
+    (
+        "```\n样本缺失率 =\n该样本缺失的SNP数量 / SNP总数量\n```",
+        r"\[\text{样本缺失率} = "
+        r"\frac{\text{该样本缺失的 SNP 数量}}"
+        r"{\text{SNP 总数量}}\]"
+    ),
+    (
+        "```\nSNP缺失率 =\n该SNP缺失的样本数量 / 样本总数量\n```",
+        r"\[\text{SNP 缺失率} = "
+        r"\frac{\text{该 SNP 缺失的样本数量}}"
+        r"{\text{样本总数量}}\]"
+    ),
+    (
+        "```\nMAF = min(p, 1-p)\n```",
+        r"\[\mathrm{MAF} = \min(p, 1-p)\]"
+    )
+]
+
+for old, new in formula_replacements:
+    if old not in body:
+        print(f"公式未匹配，暂不替换：{old}")
+        continue
+    body = body.replace(old, new, 1)
+    print("已转换一个数学公式")
+
+
 # 飞书目录链接转换为本地页面锚点
 link_targets = {
     "share-Vp35dp089ocTd4xmX5ycGt28nhe": (
